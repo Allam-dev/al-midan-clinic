@@ -1,0 +1,404 @@
+/* ==========================================================================
+   AL MIDAN DENTAL CLINIC - MOBILE-FIRST DESIGN SYSTEM & CSS TOKENS
+   Aesthetic: Warm Ivory, Deep Teal, Soft Mint, Subtle Depth
+   Typography: Cairo (Arabic Primary), Outfit (Numerals & Badges)
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --bg-warm: #fcfbf9;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-subtle: #f4f7f6;
+  --bg-teal-subtle: #f0fdfa;
+  --bg-teal-light: #ccfbf1;
+  --bg-mint: #e6fffa;
+
+  /* Primary Deep Teal Accents */
+  --teal-900: #042f2e;
+  --teal-800: #115e59;
+  --teal-700: #0f766e;
+  --teal-600: #0d9488;
+  --teal-500: #14b8a6;
+  --teal-100: #ccfbf1;
+  --teal-50: #f0fdfa;
+
+  /* Secondary Accents */
+  --gold-500: #f59e0b;
+  --gold-600: #d97706;
+  --gold-50: #fffbeb;
+  --whatsapp-color: #22c55e;
+  --whatsapp-hover: #16a34a;
+
+  /* Neutrals & Text */
+  --text-main: #0f172a;
+  --text-heading: #042f2e;
+  --text-muted: #475569;
+  --text-subtle: #64748b;
+  --border-subtle: #e2e8f0;
+  --border-teal: #99f6e4;
+  --border-card: rgba(15, 118, 110, 0.12);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 10px -1px rgba(15, 23, 42, 0.07);
+  --shadow-lg: 0 10px 20px -3px rgba(15, 118, 110, 0.08);
+  --shadow-xl: 0 20px 30px -5px rgba(15, 118, 110, 0.12);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-full: 9999px;
+
+  /* Mobile-first Spacing */
+  --container-max: 1180px;
+  --section-pad-y: 2.75rem;
+  --header-height: 64px;
+
+  /* Fonts */
+  --font-arabic: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-num: 'Outfit', 'Cairo', sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-pad-y: 4.5rem;
+    --header-height: 76px;
+  }
+}
+
+/* ==========================================================================
+   Base & Strict Mobile-First Reset (Zero Horizontal Overflow)
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-width: 0; /* Prevents flex/grid children from causing overflow */
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+html {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  text-align: right;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 16px);
+  background-color: var(--bg-warm);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  background: radial-gradient(circle at 10% 10%, rgba(204, 251, 241, 0.3) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(240, 253, 250, 0.4) 0%, transparent 45%),
+              var(--bg-warm);
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--teal-600);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-heading);
+  font-weight: 700;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.num-font {
+  font-family: var(--font-num);
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   Mobile-First Containers & Grids
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+}
+
+.section {
+  padding-top: var(--section-pad-y);
+  padding-bottom: var(--section-pad-y);
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 2.25rem auto;
+}
+
+@media (min-width: 768px) {
+  .section-header {
+    margin-bottom: 3.5rem;
+  }
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--bg-teal-subtle);
+  border: 1px solid var(--border-teal);
+  color: var(--teal-800);
+  border-radius: var(--radius-full);
+  font-size: 0.825rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  max-width: 100%;
+}
+
+.section-title {
+  font-size: clamp(1.45rem, 5vw, 2.35rem);
+  font-weight: 800;
+  color: var(--text-heading);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.section-description {
+  font-size: clamp(0.925rem, 3vw, 1.05rem);
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   Buttons (Mobile-First Thumb-Friendly)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-align: center;
+  min-height: 48px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .btn {
+    padding: 0.85rem 1.6rem;
+    font-size: 1rem;
+  }
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--teal-700), var(--teal-800));
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.25);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--teal-600), var(--teal-700));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
+}
+
+.btn-whatsapp {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.25);
+}
+
+.btn-whatsapp:hover {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.35);
+}
+
+.btn-secondary {
+  background: var(--bg-surface);
+  color: var(--teal-800);
+  border: 1px solid var(--border-teal);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-teal-subtle);
+  border-color: var(--teal-600);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-heading);
+  border: 1.5px solid var(--border-subtle);
+}
+
+.btn-outline:hover {
+  border-color: var(--teal-600);
+  color: var(--teal-700);
+  background: var(--bg-surface);
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  padding: 1.25rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .glass-card {
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+  }
+}
+
+.glass-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(15, 118, 110, 0.22);
+}
+
+/* Badges */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  font-size: 0.775rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+}
+
+.badge-pill.verified {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+/* Mobile-First Grid System (1 col on mobile, expanding on tablets/desktops) */
+.grid-mobile-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .grid-2-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .grid-3-desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Navigation Responsive Rules */
+.desktop-nav {
+  display: none;
+}
+.desktop-actions {
+  display: none;
+}
+.mobile-toggle {
+  display: flex;
+}
+
+@media (min-width: 992px) {
+  .desktop-nav {
+    display: block !important;
+  }
+  .desktop-actions {
+    display: flex !important;
+  }
+  .mobile-toggle {
+    display: none !important;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
